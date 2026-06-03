@@ -7,19 +7,16 @@ export default function Home() {
     const { data, error } = await supabase
       .from("usuarios")
       .select("*");
-
-    console.log(data);
-    console.log(error);
   }
 
   test();
   return (
     <main className="min-h-screen flex flex-col justify-center items-center gap-6">
-      <h1 className="text-5xl font-bold">
+      <h1 className="text-5xl font-bold text-black">
         Gestor de Tareas
       </h1>
 
-      <p className="text-gray-600 text-center max-w-md">
+      <p className="text-black text-center max-w-md">
         Organiza tus tareas diarias, marca actividades completadas
         y mantén tu productividad desde cualquier lugar.
       </p>

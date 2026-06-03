@@ -71,8 +71,7 @@ export default function DashboardPage() {
 
 
   useEffect(() => {
-    console.log("User:", user);
-    console.log("Loading:", loading);
+
 
     if (!loading && !user) {
       console.log("Redirigiendo...");
@@ -118,10 +117,12 @@ export default function DashboardPage() {
 
   return (
 
-    <div className="p-6 w-2/3 mx-auto">
+    <div className="p-6 w-2/3 mx-auto ">
       <form onSubmit={addTask} className="mb-6 space-y-3">
+        <h1 className="text-2xl font-bold mb-4 text-black">Formulario de Tareas</h1>
+
         <input
-          className="border p-2 w-full rounded"
+          className="border p-2 w-full rounded text-black"
           placeholder="Título de la tarea"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -129,7 +130,7 @@ export default function DashboardPage() {
         />
 
         <textarea
-          className="border p-2 w-full rounded"
+          className="border p-2 w-full rounded text-black"
           placeholder="Descripción"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -141,21 +142,21 @@ export default function DashboardPage() {
           type="submit"
           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         >
-          ➕ Agregar tarea
+          Agregar tarea
         </button>
         <button
           onClick={async () => {
             await supabase.auth.signOut();
-          }}
+          }} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 ml-4"
         >
           Cerrar sesión
         </button>
       </form>
 
       {/* TABLE */}
-      <h1 className="text-2xl font-bold mb-4">Lista de Tareas</h1>
+      <h1 className="text-2xl font-bold mb-4 text-black">Lista de Tareas</h1>
 
-      <table className="w-full border border-gray-300">
+      <table className="w-full  border-black rounded ">
         <thead>
           <tr className="bg-gray-200">
             <th className="border p-2 text-black">ID</th>
@@ -166,17 +167,17 @@ export default function DashboardPage() {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="border-black border-1  rounded">
           {tasks.map((task: any, index: number) => (
             <tr key={task.id_task} className="text-center">
-              <td className="border p-2">{index + 1}</td>
-              <td className="border p-2">{task.title_task}</td>
-              <td className="border p-2">{task.description_task}</td>
-              <td className="border p-2">
+              <td className="border p-2 text-black">{index + 1}</td>
+              <td className="border p-2 text-black">{task.title_task}</td>
+              <td className="border p-2 text-black">{task.description_task}</td>
+              <td className="border p-2 text-black">
                 {task.completed ? "✔️" : "❌"}
               </td>
 
-              <td className="border p-2 space-x-2">
+              <td className="border p-2  text-black space-x-2 ">
 
                 <button
                   onClick={() => toggleTask(task)}
